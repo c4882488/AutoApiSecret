@@ -26,7 +26,6 @@ def gettoken(refresh_token):
          }
     html = req.post('https://login.microsoftonline.com/common/oauth2/v2.0/token',data=data,headers=headers)
     jsontxt = json.loads(html.text)
-    print(jsontxt)
     refresh_token = jsontxt['refresh_token']
     access_token = jsontxt['access_token']
     with open(path, 'w+') as f:
@@ -37,7 +36,7 @@ def main():
     refresh_token = fo.read()
     fo.close()
     global num1
-    #localtime = time.asctime( time.localtime(time.time()) )
+    localtime = time.asctime( time.localtime(time.time()) )
     access_token=gettoken(refresh_token)
     headers={
     'Authorization':access_token,
@@ -77,7 +76,7 @@ def main():
         if req.get(r'https://graph.microsoft.com/v1.0/me/outlook/masterCategories',headers=headers).status_code == 200:
             num1+=1
             print('10调用成功'+str(num1)+'次')
-            #print('此次运行结束时间为 :', localtime)
+            print('此次运行结束时间为 :', localtime)
     except:
         print("pass")
         pass
