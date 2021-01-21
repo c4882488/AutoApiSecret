@@ -8,9 +8,9 @@ on:
     tags:
     - 'v*'
   #  branches: 
-  #    - master
+  #    - master 12 */2 * * *
   schedule:
-    - cron: "12 */2 * * *"
+    - cron: "0 */6 * * *"
   watch:
     types: [started]
    
